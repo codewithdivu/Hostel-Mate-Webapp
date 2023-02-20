@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
 // @mui
 import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox, FormControlLabel } from '@mui/material';
@@ -79,7 +79,7 @@ export default function LoginForm() {
             label="Remember me"
           />
 
-          <Link variant="subtitle2" to="#" underline="hover">
+          <Link variant="subtitle2" component={RouterLink} to="#" underline="hover">
             Forgot password?
           </Link>
         </Stack>
