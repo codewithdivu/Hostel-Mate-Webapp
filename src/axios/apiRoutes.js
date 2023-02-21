@@ -28,6 +28,6 @@ export const apiRoutes = {
     UPDATE_USER_DATA: '/update/user',
     GET_USER_DATA: '/api/v1/me',
     GET_ALL_USERS_DATA: '/api/v1/admin/users',
-    DELTE_USER: '/api/v1/admin/delete',
+    DELETE_USER: '/api/v1/admin/delete',
   },
 };
