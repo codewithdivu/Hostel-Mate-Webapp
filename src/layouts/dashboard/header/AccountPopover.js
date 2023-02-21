@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
@@ -11,20 +12,25 @@ const MENU_OPTIONS = [
   {
     label: 'Home',
     icon: 'eva:home-fill',
+    handle: 'handleHome',
   },
   {
     label: 'Profile',
     icon: 'eva:person-fill',
+    handle: 'handleProfile',
   },
   {
     label: 'Settings',
     icon: 'eva:settings-2-fill',
+    handle: 'handleSettings',
   },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(null);
 
   const handleOpen = (event) => {
@@ -33,6 +39,17 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     setOpen(null);
+    navigate('/login');
+  };
+
+  const handleHome = () => {
+    console.log('hello handleHome....');
+  };
+  const handleProfile = () => {
+    console.log('hello handleProfile....');
+  };
+  const handleSettings = () => {
+    console.log('hello handleSettings....');
   };
 
   return (
@@ -89,7 +106,7 @@ export default function AccountPopover() {
 
         <Stack sx={{ p: 1 }}>
           {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label} onClick={handleClose}>
+            <MenuItem key={option.label} onClick={option.handle}>
               {option.label}
             </MenuItem>
           ))}

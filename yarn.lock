@@ -1328,6 +1328,11 @@
   "resolved" "https://registry.npmjs.org/@faker-js/faker/-/faker-7.6.0.tgz"
   "version" "7.6.0"
 
+"@hookform/resolvers@^2.9.11":
+  "integrity" "sha512-bA3aZ79UgcHj7tFV7RlgThzwSSHZgvfbt2wprldRkYBcMopdMvHyO17Wwp/twcJasNFischFfS7oz8Katz8DdQ=="
+  "resolved" "https://registry.npmjs.org/@hookform/resolvers/-/resolvers-2.9.11.tgz"
+  "version" "2.9.11"
+
 "@humanwhocodes/config-array@^0.10.5":
   "integrity" "sha512-MDl6D6sBsaV452/QSdX+4CXIjZhIcI0PELsxUjk4U828yd58vk3bTIvk/6w5FY+4hIy9sLW0sfrV7K7Kc++j/w=="
   "resolved" "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.10.7.tgz"
@@ -7662,10 +7667,10 @@
     "react-fast-compare" "^3.2.0"
     "shallowequal" "^1.1.0"
 
-"react-hook-form@^7.37.0":
-  "integrity" "sha512-6NFTxsnw+EXSpNNvLr5nFMjPdYKRryQcelTHg7zwBB6vAzfPIcZq4AExP4heVlwdzntepQgwiOQW4z7Mr99Lsg=="
-  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.37.0.tgz"
-  "version" "7.37.0"
+"react-hook-form@^7.0.0", "react-hook-form@^7.43.1":
+  "integrity" "sha512-+s3+s8LLytRMriwwuSqeLStVjRXFGxgjjx2jED7Z+wz1J/88vpxieRQGvJVvzrzVxshZ0BRuocFERb779m2kNg=="
+  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.43.1.tgz"
+  "version" "7.43.1"
 
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
