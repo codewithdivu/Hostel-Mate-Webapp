@@ -3,14 +3,39 @@ import { useState } from 'react';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
 // @mui
-import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox, FormControlLabel } from '@mui/material';
+import {
+  Link,
+  Stack,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Checkbox,
+  FormControlLabel,
+  InputLabel,
+  Select,
+  MenuItem,
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // components
+import { axiosPost } from '../../../axios/config';
+import { apiRoutes } from '../../../axios/apiRoutes';
 import Iconify from '../../../components/iconify';
 
 // ----------------------------------------------------------------------
+const roles = [
+  {
+    label: 'admin',
+    value: 1,
+  },
+  {
+    label: 'user',
+    value: 9,
+  },
+];
 
 export default function LoginForm() {
+  const [role, setRole] = useState(9);
+
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -24,12 +49,27 @@ export default function LoginForm() {
     initialValues: {
       email: '',
       password: '',
-      remember: true,
+      // remember: true,
     },
     validationSchema: LoginSchema,
-    onSubmit: (loginData) => {
-      navigate('/dashboard', { replace: true });
-      console.log('loginData', loginData);
+    onSubmit: async (loginData) => {
+      try {
+        const response = await axiosPost(
+          role === 1 ? apiRoutes.AUTH.ADMIN_LOGIN : apiRoutes.AUTH.USER_LOGIN,
+          loginData
+        );
+        if (response.status) {
+          const obj = {
+            token: response.data.token,
+            user: response.data.user,
+          };
+          console.log('auth..', obj);
+          localStorage.setItem('auth', obj);
+          navigate('/dashboard', { replace: true });
+        }
+      } catch (error) {
+        console.log('error', error);
+      }
     },
   });
 
@@ -43,6 +83,26 @@ export default function LoginForm() {
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
+          <InputLabel id="demo-simple-select-label">Role</InputLabel>
+          <Select
+            placeholder="Role"
+            label="Role"
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={role}
+            onChange={(e) => {
+              setRole(e.target.value);
+            }}
+            error={Boolean(touched.role && errors.role)}
+            helperText={touched.role && errors.role}
+          >
+            {roles.map((role) => (
+              <MenuItem key={role.value} selected value={role.value}>
+                {role.label}
+              </MenuItem>
+            ))}
+          </Select>
+
           <TextField
             fullWidth
             autoComplete="username"
@@ -74,10 +134,10 @@ export default function LoginForm() {
         </Stack>
 
         <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
-          <FormControlLabel
+          {/* <FormControlLabel
             control={<Checkbox {...getFieldProps('remember')} checked={values.remember} />}
             label="Remember me"
-          />
+          /> */}
 
           <Link variant="subtitle2" component={RouterLink} to="#" underline="hover">
             Forgot password?
