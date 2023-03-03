@@ -1,11 +1,16 @@
 import axios from 'axios';
 
-const axiosApi = axios.create({
+export const axiosApi = axios.create({
   baseURL: 'https://last-try-blue.vercel.app',
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+axiosApi.interceptors.response.use(
+  (response) => response,
+  (error) => Promise.reject((error.response && error.response.data) || 'Something went wrong')
+);
 
 // POST
 

@@ -8,15 +8,18 @@ import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
 // ----------------------------------------------------------------------
+import { AuthProvider } from './contexts/JWTContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <HelmetProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </HelmetProvider>
+  <AuthProvider>
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
+  </AuthProvider>
 );
 
 // If you want to enable client cache, register instead.

@@ -5,6 +5,7 @@ import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
 // mocks_
 import account from '../../../_mock/account';
+import useAuth from '../../../hooks/useAuth';
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +27,7 @@ const MENU_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(null);
@@ -34,9 +36,9 @@ export default function AccountPopover() {
     setOpen(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = async () => {
+    const res = await logout();
     setOpen(null);
-    localStorage.removeItem('auth');
     navigate('/login');
   };
 
