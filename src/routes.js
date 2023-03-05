@@ -7,7 +7,7 @@ import BlogPage from './pages/BlogPage';
 import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
-import ProductsPage from './pages/ProductsPage';
+import StudentsPage from './pages/StudentsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import RegisterPage from './pages/RegisterPage';
 import useAuth from './hooks/useAuth';
@@ -30,7 +30,7 @@ export default function Router() {
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'markEntry', element: <MarkEntry /> },
         { path: 'entries', element: <UserPage /> },
-        { path: 'students', element: <ProductsPage /> },
+        { path: 'students', element: <StudentsPage /> },
         { path: 'annoucement', element: <BlogPage /> },
         { path: 'generateQR', element: <GenerateQR /> },
         { path: 'profile', element: <Profile /> },
