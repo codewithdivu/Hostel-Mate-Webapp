@@ -28,7 +28,7 @@ export default function StudentsPage() {
             Students
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
-            New Post
+            Add Student
           </Button>
         </Stack>
 
