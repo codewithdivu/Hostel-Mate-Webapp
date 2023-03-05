@@ -19,8 +19,8 @@ const MENU_OPTIONS = [
     icon: 'eva:person-fill',
   },
   {
-    label: 'Settings',
-    icon: 'eva:settings-2-fill',
+    label: 'Account',
+    icon: 'eva:settings-outline',
   },
 ];
 
@@ -43,6 +43,25 @@ export default function AccountPopover() {
   };
   const handlecluse = async () => {
     setOpen(null);
+  };
+
+  const handleMove = (label) => {
+    switch (label) {
+      case 'Home':
+        navigate('/dashboard/app');
+        setOpen(null);
+        break;
+      case 'Profile':
+        navigate('/dashboard/profile');
+        setOpen(null);
+        break;
+      case 'Account':
+        navigate('/dashboard/account');
+        setOpen(null);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -106,7 +125,9 @@ export default function AccountPopover() {
 
         <Stack sx={{ p: 1 }}>
           {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label}>{option.label}</MenuItem>
+            <MenuItem key={option.label} onClick={() => handleMove(option.label)}>
+              {option.label}
+            </MenuItem>
           ))}
         </Stack>
 

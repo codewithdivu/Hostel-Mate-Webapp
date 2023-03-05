@@ -12,6 +12,9 @@ import DashboardAppPage from './pages/DashboardAppPage';
 import RegisterPage from './pages/RegisterPage';
 import useAuth from './hooks/useAuth';
 import GenerateQR from './pages/GenerateQR';
+import MarkEntry from './pages/MarkEntry';
+import Profile from './pages/Profile';
+import AccountGeneral from './pages/AccountGeneral';
 
 // ----------------------------------------------------------------------
 
@@ -25,10 +28,13 @@ export default function Router() {
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
-        { path: 'user', element: <UserPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        { path: 'markEntry', element: <MarkEntry /> },
+        { path: 'entries', element: <UserPage /> },
+        { path: 'students', element: <ProductsPage /> },
+        { path: 'annoucement', element: <BlogPage /> },
         { path: 'generateQR', element: <GenerateQR /> },
+        { path: 'profile', element: <Profile /> },
+        { path: 'account', element: <AccountGeneral /> },
       ],
     },
     {

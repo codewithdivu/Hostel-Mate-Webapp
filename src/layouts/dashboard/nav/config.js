@@ -12,18 +12,28 @@ const navConfig = [
     icon: icon('ic_analytics'),
   },
   {
+    title: 'Profile',
+    path: '/dashboard/profile',
+    icon: icon('ic_blog'),
+  },
+  {
+    title: 'Mark Entry',
+    path: '/dashboard/markEntry',
+    icon: icon('ic_analytics'),
+  },
+  {
     title: 'Entries',
-    path: '/dashboard/user',
+    path: '/dashboard/entries',
     icon: icon('ic_cart'),
   },
   {
     title: 'Students',
-    path: '/dashboard/products',
+    path: '/dashboard/students',
     icon: icon('ic_user'),
   },
   {
     title: 'Announcement',
-    path: '/dashboard/blog',
+    path: '/dashboard/annoucement',
     icon: icon('ic_blog'),
   },
   {
@@ -31,16 +41,6 @@ const navConfig = [
     path: '/dashboard/generateQR',
     icon: icon('ic_cart'),
   },
-  // {
-  //   title: 'login',
-  //   path: '/login',
-  //   icon: icon('ic_lock'),
-  // },
-  // {
-  //   title: 'Not found',
-  //   path: '/404',
-  //   icon: icon('ic_disabled'),
-  // },
 ];
 
 export default navConfig;
