@@ -10,29 +10,34 @@ import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import RegisterPage from './pages/RegisterPage';
+import useAuth from './hooks/useAuth';
+import GenerateQR from './pages/GenerateQR';
 
 // ----------------------------------------------------------------------
 
 export default function Router() {
+  const { isAuthenticated } = useAuth();
+
   const routes = useRoutes([
     {
       path: '/dashboard',
-      element: <DashboardLayout />,
+      element: isAuthenticated ? <DashboardLayout /> : <Navigate to="/login" />,
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
+        { path: 'generateQR', element: <GenerateQR /> },
       ],
     },
     {
       path: 'login',
-      element: <LoginPage />,
+      element: !isAuthenticated ? <LoginPage /> : <Navigate to="/dashboard" />,
     },
     {
       path: 'register',
-      element: <RegisterPage />,
+      element: !isAuthenticated ? <RegisterPage /> : <Navigate to="/dashboard" />,
     },
     {
       element: <SimpleLayout />,

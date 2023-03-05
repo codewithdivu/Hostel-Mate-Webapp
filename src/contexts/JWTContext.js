@@ -63,47 +63,46 @@ AuthProvider.propTypes = {
 function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // useEffect(() => {
-  //   const initialize = async () => {
-  //     try {
-  //       const accessToken = window.localStorage.getItem('accessToken');
+  useEffect(() => {
+    const initialize = async () => {
+      try {
+        const accessToken = localStorage.getItem('accessToken');
 
-  //       if (accessToken && isValidToken(accessToken)) {
-  //         setSession(accessToken);
+        if (accessToken && isValidToken(accessToken)) {
+          setSession(accessToken);
 
-  //         const response = await axiosGet('/users/login/');
-  //         const user = response.data;
+          const user = localStorage.getItem('user');
 
-  //         dispatch({
-  //           type: 'INITIALIZE',
-  //           payload: {
-  //             isAuthenticated: true,
-  //             user,
-  //           },
-  //         });
-  //       } else {
-  //         dispatch({
-  //           type: 'INITIALIZE',
-  //           payload: {
-  //             isAuthenticated: false,
-  //             user: null,
-  //           },
-  //         });
-  //       }
-  //     } catch (err) {
-  //       console.error(err);
-  //       dispatch({
-  //         type: 'INITIALIZE',
-  //         payload: {
-  //           isAuthenticated: false,
-  //           user: null,
-  //         },
-  //       });
-  //     }
-  //   };
+          dispatch({
+            type: 'INITIALIZE',
+            payload: {
+              isAuthenticated: true,
+              user,
+            },
+          });
+        } else {
+          dispatch({
+            type: 'INITIALIZE',
+            payload: {
+              isAuthenticated: false,
+              user: null,
+            },
+          });
+        }
+      } catch (err) {
+        console.error(err);
+        dispatch({
+          type: 'INITIALIZE',
+          payload: {
+            isAuthenticated: false,
+            user: null,
+          },
+        });
+      }
+    };
 
-  //   initialize();
-  // }, []);
+    initialize();
+  }, []);
 
   const login = async (email, password, isStudent) => {
     const response = await axiosPost(isStudent ? apiRoutes.AUTH.USER_LOGIN : apiRoutes.AUTH.ADMIN_LOGIN, {
@@ -111,6 +110,7 @@ function AuthProvider({ children }) {
       password,
     });
     const { token, user } = response.data;
+    localStorage.setItem('user', user);
 
     setSession(token);
     dispatch({
@@ -123,6 +123,7 @@ function AuthProvider({ children }) {
 
   const logout = async () => {
     setSession(null);
+    localStorage.removeItem('user');
     dispatch({ type: 'LOGOUT' });
   };
 

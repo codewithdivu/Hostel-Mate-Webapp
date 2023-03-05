@@ -26,6 +26,11 @@ const navConfig = [
     path: '/dashboard/blog',
     icon: icon('ic_blog'),
   },
+  {
+    title: 'Generate QR',
+    path: '/dashboard/generateQR',
+    icon: icon('ic_cart'),
+  },
   // {
   //   title: 'login',
   //   path: '/login',
