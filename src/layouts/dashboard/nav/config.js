@@ -1,45 +1,46 @@
 // component
-import SvgColor from '../../../components/svg-color';
-
+import Iconify from '../../../components/iconify/Iconify';
 // ----------------------------------------------------------------------
 
-const icon = (name) => <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />;
+const icon = (name) => <Iconify icon={name} width={22} height={22} />;
 
 const navConfig = [
   {
     title: 'Dashboard',
     path: '/dashboard/app',
-    icon: icon('ic_analytics'),
+    icon: icon('eva:pie-chart-2-fill'),
   },
-  {
-    title: 'Profile',
-    path: '/dashboard/profile',
-    icon: icon('ic_blog'),
-  },
+
   {
     title: 'Mark Entry',
     path: '/dashboard/markEntry',
-    icon: icon('ic_analytics'),
+    icon: icon('eva:checkmark-square-fill'),
   },
   {
     title: 'Entries',
     path: '/dashboard/entries',
-    icon: icon('ic_cart'),
+    icon: icon('eva:list-fill'),
   },
+
   {
     title: 'Students',
     path: '/dashboard/students',
-    icon: icon('ic_user'),
+    icon: icon('eva:people-fill'),
   },
   {
     title: 'Announcement',
     path: '/dashboard/annoucement',
-    icon: icon('ic_blog'),
+    icon: icon('eva:monitor-fill'),
+  },
+  {
+    title: 'Profile',
+    path: '/dashboard/profile',
+    icon: icon('eva:person-fill'),
   },
   {
     title: 'Generate QR',
     path: '/dashboard/generateQR',
-    icon: icon('ic_cart'),
+    icon: icon('eva:keypad-fill'),
   },
 ];
 
