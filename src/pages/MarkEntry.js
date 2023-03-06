@@ -53,6 +53,9 @@ function MarkEntry() {
   const handleNext = () => {
     setStep((step) => step + 1);
   };
+  const handlePrev = () => {
+    setStep((step) => step - 1);
+  };
 
   const LoginSchema = Yup.object().shape({
     whereTo: Yup.string().required('required....'),
@@ -84,24 +87,31 @@ function MarkEntry() {
           <Typography variant="h4" gutterBottom>
             Mark Entry
           </Typography>
+          <Button disabled={step === 1} variant="contained" onClick={handlePrev}>
+            Previous
+          </Button>
         </Stack>
-        <Grid container sx={{ marginTop: '5rem' }} spacing={3}>
-          <FormikProvider value={formik}>
-            <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-              {renderForm(step)}
-              {step === 1 && (
-                <LoadingButton variant="contained" onClick={handleNext}>
-                  Next
-                </LoadingButton>
-              )}
-              {step === 2 && (
-                <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
-                  Submit
-                </LoadingButton>
-              )}
-            </Form>
-          </FormikProvider>
-        </Grid>
+        <FormikProvider value={formik}>
+          <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+            <Grid container sx={{ marginTop: '5rem' }} spacing={3}>
+              <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
+                {renderForm(step)}
+              </Grid>
+              <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', marginTop: '10rem' }}>
+                {step === 1 && (
+                  <LoadingButton fullWidth size="large" variant="contained" onClick={handleNext}>
+                    Next
+                  </LoadingButton>
+                )}
+                {step === 2 && (
+                  <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
+                    Submit
+                  </LoadingButton>
+                )}
+              </Grid>
+            </Grid>
+          </Form>
+        </FormikProvider>
       </Container>
     </>
   );
