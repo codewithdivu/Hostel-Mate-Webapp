@@ -71,7 +71,7 @@ function AuthProvider({ children }) {
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
 
-          const user = localStorage.getItem('user');
+          const user = localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'));
 
           dispatch({
             type: 'INITIALIZE',
@@ -110,7 +110,7 @@ function AuthProvider({ children }) {
       password,
     });
     const { token, user } = response.data;
-    localStorage.setItem('user', user);
+    localStorage.setItem('user', JSON.stringify(user));
 
     setSession(token);
     dispatch({

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Container, Grid, Stack, Typography } from '@mui/material';
+import axios from 'axios';
 
 function MarkEntry() {
   return (
@@ -23,3 +24,15 @@ function MarkEntry() {
 }
 
 export default MarkEntry;
+
+// const [lat, setLat] = useState([]);
+// const [long, setLong] = useState([]);
+
+// useEffect(() => {
+//   navigator.geolocation.getCurrentPosition((position) => {
+//     setLat(position.coords.latitude);
+//     setLong(position.coords.longitude);
+//   });
+//   console.log('Latitude is:', lat);
+//   console.log('Longitude is:', long);
+// }, [lat, long]);

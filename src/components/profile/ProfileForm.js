@@ -8,20 +8,22 @@ import { LoadingButton } from '@mui/lab';
 
 import { FormProvider, RHFTextField, RHFUploadAvatar } from '../hook-form';
 import { fData } from '../../utils/formatNumber';
+import useAuth from '../../hooks/useAuth';
 
 function ProfileForm() {
+  const { user } = useAuth();
+
+  console.log('user', user);
+
   const UpdateUserSchema = Yup.object().shape({
-    displayName: Yup.string().required('Name is required'),
+    name: Yup.string().required('Name is required'),
     email: Yup.string().email(),
-    phoneNumber: Yup.string().required('required').min(10, 'to short').max(10, 'to long'),
-    address: Yup.string().required('Address is required'),
-    state: Yup.string().required('State is required'),
-    city: Yup.string().required('City is required'),
-    zipCode: Yup.number()
-      .min(100000, 'Must be exactly 6 characters')
-      .max(999999, 'Must be exactly 6 characters')
-      .required('ZipCode is required'),
-    about: Yup.string().required('About is required'),
+    password: Yup.string(),
+    room_no: Yup.number().required('room no is required'),
+    enrollment_no: Yup.number().required('enrollment no is required'),
+    floor: Yup.string().required('floor is required'),
+    phoneNo: Yup.number().required('phone number is required'),
+    role: Yup.string(),
   });
 
   const methods = useForm({
@@ -93,17 +95,16 @@ function ProfileForm() {
                 gridTemplateColumns: { xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)' },
               }}
             >
-              <RHFTextField name="displayName" label="Name" />
+              <RHFTextField name="name" label="Name" />
               <RHFTextField disabled name="email" label="Email Address" />
-              <RHFTextField name="phoneNumber" label="Phone Number" />
-              <RHFTextField name="address" label="Address" />
-
-              <RHFTextField name="state" label="State/Region" />
-              <RHFTextField name="city" label="City" />
-              <RHFTextField name="zipCode" label="Zip/Code" />
+              <RHFTextField disabled name="password" label="Password" />
+              <RHFTextField name="room_no" label="Room No" />
+              <RHFTextField name="enrollment_no" label="Enrollment Number" />
+              <RHFTextField name="floor" label="Floor" />
+              <RHFTextField name="phoneNo" label="Phone Number" />
+              <RHFTextField disabled name="role" label="Role" />
             </Box>
             <Stack spacing={3} alignItems="flex-end" sx={{ mt: 3 }}>
-              <RHFTextField name="about" multiline rows={4} label="About" />
               <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
                 Update
               </LoadingButton>

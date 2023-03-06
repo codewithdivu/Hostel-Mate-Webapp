@@ -10,11 +10,11 @@ import Page404 from './pages/Page404';
 import StudentsPage from './pages/StudentsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import RegisterPage from './pages/RegisterPage';
-import useAuth from './hooks/useAuth';
 import GenerateQR from './pages/GenerateQR';
 import MarkEntry from './pages/MarkEntry';
 import Profile from './pages/Profile';
 import AccountGeneral from './pages/AccountGeneral';
+import useAuth from './hooks/useAuth';
 
 // ----------------------------------------------------------------------
 
