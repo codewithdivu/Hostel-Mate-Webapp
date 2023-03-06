@@ -9,14 +9,10 @@ import Avatar from './Avatar';
 
 export default function MyAvatar({ ...other }) {
   const { user } = useAuth();
+  const pathu = '/assets/images/divu.jpg';
 
   return (
-    <Avatar
-      src={user?.photoURL}
-      alt={user?.name}
-      color={user?.photoURL ? 'default' : createAvatar(user?.name).color}
-      {...other}
-    >
+    <Avatar src={pathu} alt={user?.name} color={pathu ? 'default' : createAvatar(user?.name).color} {...other}>
       {createAvatar(user?.name).name}
     </Avatar>
   );

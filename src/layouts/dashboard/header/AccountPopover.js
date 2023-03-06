@@ -63,7 +63,6 @@ export default function AccountPopover() {
         break;
     }
   };
-
   return (
     <>
       <IconButton
