@@ -5,6 +5,7 @@ import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 // components
 import Iconify from '../components/iconify';
+import useAuth from '../hooks/useAuth';
 // sections
 import {
   AppTasks,
@@ -22,17 +23,17 @@ import {
 
 export default function DashboardAppPage() {
   const theme = useTheme();
- 
+  const { user } = useAuth();
 
   return (
     <>
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> Dashboard | Hostel Entry </title>
       </Helmet>
 
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+          Hi, Welcome back {user.name}
         </Typography>
 
         <Grid container spacing={3}>

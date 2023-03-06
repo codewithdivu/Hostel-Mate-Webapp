@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { Grid, Button, Container, Stack, Typography } from '@mui/material';
@@ -6,6 +7,8 @@ import Iconify from '../components/iconify';
 import { StudentPostCard, StudentPostsSort, StudentPostsSearch } from '../sections/@dashboard/students';
 // mock
 import POSTS from '../_mock/blog';
+import { axiosGet } from '../axios/config';
+import { apiRoutes } from '../axios/apiRoutes';
 
 // ----------------------------------------------------------------------
 
@@ -16,6 +19,21 @@ const SORT_OPTIONS = [
 ];
 
 export default function StudentsPage() {
+  const [students, setStudents] = useState();
+
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await axiosGet(apiRoutes.DETAILS.GET_ALL_USERS_DATA);
+        console.log('res...', response);
+      } catch (error) {
+        console.log('error', error);
+      }
+    };
+
+    fetchStudents();
+  }, []);
+
   return (
     <>
       <Helmet>
